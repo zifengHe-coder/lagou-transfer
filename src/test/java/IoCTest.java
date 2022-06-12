@@ -16,6 +16,7 @@ public class IoCTest {
 
     @Test
     public void DITest() throws Exception {
+        //实现DI
         BeanFactory.init();
         TransferService transferService =(TransferService) BeanFactory.getBean("transferService");
         transferService.transfer("6029621011000", "6029621011001",100);

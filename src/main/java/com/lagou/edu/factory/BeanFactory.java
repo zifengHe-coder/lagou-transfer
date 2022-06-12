@@ -38,7 +38,7 @@ public class BeanFactory {
             System.out.println(classInfos);
             for (Class<?> classInfo : classInfos) {
                 String className = classInfo.getName().substring(classInfo.getName().lastIndexOf(".") + 1);
-                String defaultId = className.substring(0, 1).toLowerCase(Locale.ROOT) + className.substring(1);
+                String defaultId = className.substring(0, 1).toLowerCase(Locale.ROOT) + className.substring(1);//AccountDao -> accountDao
                 String id = null;
                 //所有类方法均用cglib动态代理，并处理方法中可能出现@Transaction的情况
 
@@ -88,7 +88,7 @@ public class BeanFactory {
                                 //判断注入类本身是否含事务注解
                                 Class<?> subClass = classIdMap.get(field.getName());
                                 if (subClass.getAnnotation(Transactional.class)!=null) {
-                                    method.invoke(parentObject,subClass.getInterfaces().getClass().cast(ProxyFactory.getInstance().getTransactionProxy(map.get(field.getName()))));
+                                    method.invoke(parentObject,ProxyFactory.getInstance().getTransactionProxy(map.get(field.getName())));
                                 } else {
                                     method.invoke(parentObject,map.get(field.getName()));
                                 }
