@@ -1,7 +1,11 @@
 package com.lagou.edu.utils;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.sql.SQLException;
 
+@Component("transactionManager")
 public class TransactionManager {
 //    private TransactionManager() {}
 
@@ -10,7 +14,12 @@ public class TransactionManager {
 //    public static TransactionManager getInstance() {
 //        return transactionManager;
 //    }
+    @Autowired
     private ConnectionUtils connectionUtils;
+
+    public ConnectionUtils getConnectionUtils() {
+        return connectionUtils;
+    }
 
     public void setConnectionUtils(ConnectionUtils connectionUtils) {
         this.connectionUtils = connectionUtils;

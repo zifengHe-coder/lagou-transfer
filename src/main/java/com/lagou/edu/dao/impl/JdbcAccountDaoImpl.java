@@ -3,21 +3,30 @@ package com.lagou.edu.dao.impl;
 import com.lagou.edu.pojo.Account;
 import com.lagou.edu.dao.AccountDao;
 import com.lagou.edu.utils.ConnectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+
 /**
  * @author 应癫
  */
+@Repository("accountDao")
 public class JdbcAccountDaoImpl implements AccountDao {
+    @Autowired
     private ConnectionUtils connectionUtils;
 
     public void setConnectionUtils(ConnectionUtils connectionUtils) {
         this.connectionUtils = connectionUtils;
     }
 
+    public ConnectionUtils getConnectionUtils() {
+        return connectionUtils;
+    }
 
     @Override
     public Account queryAccountByCardNo(String cardNo) throws Exception {

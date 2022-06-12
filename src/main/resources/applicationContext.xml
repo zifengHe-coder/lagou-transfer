@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
- https://www.springframework.org/schema/beans/spring-beans.xsd">
+                           https://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--第三方包并定义在xml中-->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/bank?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="123456"/>
-    </bean>
 
-    <bean id="accountDao" class = "com.lagou.edu.dao.impl.JdbcAccountDaoImpl">
-        <property name="ConnectionUtils" ref="connectionUtils"/>
-    </bean>
+<!--    &lt;!&ndash; 引入外部资源文件&ndash;&gt;-->
+<!--    <context:property-placeholder location="classpath:jdbc.properties"/>-->
+<!--    &lt;!&ndash;第三方包并定义在xml中&ndash;&gt;-->
+<!--    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--        <property name="driverClassName" value="${jdbc.driver}"/>-->
+<!--        <property name="url" value="${jdbc.url}"/>-->
+<!--        <property name="username" value="${jdbc.username}"/>-->
+<!--        <property name="password" value="${jdbc.password}"/>-->
+<!--    </bean>-->
+    <!-- 开启注解扫描-->
+<!--    <context:component-scan base-package="com.lagou.edu"/>-->
 
-    <bean id="transferService" class = "com.lagou.edu.service.impl.TransferServiceImpl">
-        <property name="AccountDao" ref="accountDao"/>
-    </bean>
-    <bean id="connectionUtils" class="com.lagou.edu.utils.ConnectionUtils">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
 
-    <bean id="transactionManager" class="com.lagou.edu.utils.TransactionManager">
-        <property name="ConnectionUtils" ref="connectionUtils"/>
-    </bean>
+<!--    <bean id="accountDao" class = "com.lagou.edu.dao.impl.JdbcAccountDaoImpl">-->
+<!--        <property name="ConnectionUtils" ref="connectionUtils"/>-->
+<!--    </bean>-->
 
-    <bean id = "proxyFactory" class="com.lagou.edu.factory.ProxyFactory">
-        <property name="TransactionManager" ref="transactionManager"/>
-    </bean>
+<!--    <bean id="transferService" class = "com.lagou.edu.service.impl.TransferServiceImpl">-->
+<!--        <property name="AccountDao" ref="accountDao"/>-->
+<!--    </bean>-->
+<!--    <bean id="connectionUtils" class="com.lagou.edu.utils.ConnectionUtils">-->
+<!--        <property name="dataSource" ref="dataSource"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="transactionManager" class="com.lagou.edu.utils.TransactionManager">-->
+<!--        <property name="ConnectionUtils" ref="connectionUtils"/>-->
+<!--    </bean>-->
+
+<!--    <bean id = "proxyFactory" class="com.lagou.edu.factory.ProxyFactory">-->
+<!--        <property name="TransactionManager" ref="transactionManager"/>-->
+<!--    </bean>-->
 </beans>
