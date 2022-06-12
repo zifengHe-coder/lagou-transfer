@@ -6,9 +6,14 @@
   <display-name>Archetype Created Web Application</display-name>
 
 
+  <!--通知contextLoaderListener我们使用注解的方式启动IOC容器-->
+  <context-param>
+    <param-name>contextClass</param-name>
+    <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+  </context-param>
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:applicationContext.xml</param-value>
+    <param-value>com.lagou.edu.SpringConfig</param-value>
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
