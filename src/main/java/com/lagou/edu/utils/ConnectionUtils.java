@@ -1,20 +1,23 @@
 package com.lagou.edu.utils;
 
+import com.lagou.edu.anno.Component;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
  * 饿汉式实例化
  */
+
 public class ConnectionUtils {
-//    private ConnectionUtils() {
-//    }
-//
-//    private static ConnectionUtils connectionUtils = new ConnectionUtils();
-//
-//    public static ConnectionUtils getInstance() {
-//        return connectionUtils;
-//    }
+    public ConnectionUtils() {
+    }
+
+    private static ConnectionUtils connectionUtils = new ConnectionUtils();
+
+    public static ConnectionUtils getInstance() {
+        return connectionUtils;
+    }
 
     private ThreadLocal<Connection> threadLocal = new ThreadLocal<>();//当前线程连接
 

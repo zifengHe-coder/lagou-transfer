@@ -2,10 +2,10 @@ package com.lagou.edu.anno;
 
 import java.lang.annotation.*;
 
-@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
+@Target(value = {ElementType.TYPE})
 @Documented
-@Inherited
-public @interface MyComponent {
+@Inherited //可继承
+public @interface Service {
     String value() default "";
 }

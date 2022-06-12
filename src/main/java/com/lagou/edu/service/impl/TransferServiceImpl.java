@@ -1,5 +1,8 @@
 package com.lagou.edu.service.impl;
 
+import com.lagou.edu.anno.Autowired;
+import com.lagou.edu.anno.Service;
+import com.lagou.edu.anno.Transactional;
 import com.lagou.edu.dao.AccountDao;
 import com.lagou.edu.pojo.Account;
 import com.lagou.edu.service.TransferService;
@@ -7,8 +10,11 @@ import com.lagou.edu.service.TransferService;
 /**
  * @author 应癫
  */
+@Service("transferService")
+@Transactional
 public class TransferServiceImpl implements TransferService {
 
+    @Autowired
     private AccountDao accountDao;
 
     public void setAccountDao(AccountDao accountDao) {
@@ -24,7 +30,7 @@ public class TransferServiceImpl implements TransferService {
         to.setMoney(to.getMoney()+money);
 
         accountDao.updateAccountByCardNo(to);
-        int c = 1/0;
+//        int c = 1/0;
         accountDao.updateAccountByCardNo(from);
 
     }

@@ -22,9 +22,9 @@ public class TransferServlet extends HttpServlet {
 
     // 1. 实例化service层对象
     // 从BeanFactory中获取proxyFactory
-    private TransferService transferService = (TransferService) ((ProxyFactory) BeanFactory.getBean("proxyFactory")).
-            getTransactionProxy(BeanFactory.getBean("transferService"));
-            //(TransferService) ProxyFactory.getInstance().getTransactionProxy(BeanFactory.getBean("transferService"));
+    private TransferService transferService =(TransferService) BeanFactory.getBean("transferService");
+
+    //(TransferService) ProxyFactory.getInstance().getTransactionProxy(BeanFactory.getBean("transferService"));
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

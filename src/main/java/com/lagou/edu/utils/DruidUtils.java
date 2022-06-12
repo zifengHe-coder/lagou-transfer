@@ -1,13 +1,14 @@
 package com.lagou.edu.utils;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.lagou.edu.anno.Component;
 
 /**
  * @author 应癫
  */
 public class DruidUtils {
 
-    private DruidUtils(){
+    public DruidUtils(){
     }
 
     private static DruidDataSource druidDataSource = new DruidDataSource();
